@@ -78,8 +78,8 @@
 				4CF1B97A207D56F000008DEF /* RTOS.hpp */,
 				4CF1B977207D56E400008DEF /* Task.cpp */,
 				4CF1B978207D56E400008DEF /* Task.hpp */,
-				4CF1B963207C12E700008DEF /* node.cpp */,
 				4CF1B964207C12E700008DEF /* node.hpp */,
+				4CF1B963207C12E700008DEF /* node.cpp */,
 			);
 			path = main;
 			sourceTree = "<group>";
