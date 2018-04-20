@@ -16,28 +16,13 @@ class Task : public node {
 public:
     typedef void (*FUNCTION )(void);
     typedef int value_type;
-    Task(FUNCTION func,const value_type& init_data = value_type( ), node* init_link = NULL)
-        : node(init_link) {
-        state = func;
-        Priority = init_data;
-    }
-    
-   virtual void task() {
-        state();
-        Ready = 0;
-        cout << Priority << endl;
-        return;
-    }
-    
-    int getPriority() {
-        return Priority;
-    }
-    
-    int getReady() {
-        return Ready;
-    }
-    
-    ~Task() {}
+
+    Task(FUNCTION func,const value_type& init_data = value_type( ), node* init_link = NULL);
+    ~Task();
+    virtual void task();
+    int getPriority();
+    int getReady();
+
 private:
     FUNCTION state;
     int Priority;

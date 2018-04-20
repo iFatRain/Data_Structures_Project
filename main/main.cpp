@@ -37,7 +37,7 @@ int main(int argc, const char * argv[]) {
        Task_list_insert(first_head,&heart,i % 10);
     }
     
-    RTOS mainRTOS(RTOS_list_head);
+    RTOS mainRTOS(first_head);
     
     for(int i = 25; i > 0; i--){
         mainRTOS.startTask();
