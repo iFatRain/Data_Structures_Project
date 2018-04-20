@@ -10,7 +10,12 @@
 #include <assert.h>
 
 
+RTOS:: RTOS(node * &taskList, node *init_link, int prior): node(init_link) {
+    listHead = taskList;
+    priority = prior;
+}
 
+RTOS:: ~RTOS(){}
 
 RTOS::node* RTOS::Scheduler(){
     base = 0;
@@ -37,6 +42,13 @@ void RTOS:: startTask() {
     return;
 }
 
+int RTOS:: getReady() {
+    return ready;
+}
+
+int RTOS::getPriority() {
+    return priority;
+}
 //void RTOS:: startOS() {
 //    while() {
 //

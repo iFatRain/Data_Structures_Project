@@ -15,23 +15,15 @@
 class RTOS : public node {
     
     public:
-    RTOS(node * &taskList, node *init_link = NULL, int prior = 0): node(init_link) {
-            listHead = taskList;
-            priority = prior;
-        }
+        RTOS(node * &taskList, node *init_link = NULL, int prior = 0);
         node* Scheduler();
         //void wait();
         void startTask();
         void task();
         void startOS();
-        int getReady() {
-            return ready;
-        }
-        int getPriority() {
-            return priority;
-        }
-    
-        ~RTOS() { }
+        int getReady();
+        int getPriority();
+        ~RTOS();
     
     private:
         node *listHead;
