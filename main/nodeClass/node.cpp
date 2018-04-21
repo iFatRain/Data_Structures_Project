@@ -33,3 +33,10 @@ int node::getReady() {
 int node::getPriority() {
     return 0;
 }
+
+void node::setReady(int newReady){
+    return;
+}
+
+
+

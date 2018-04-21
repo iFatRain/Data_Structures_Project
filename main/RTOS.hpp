@@ -14,7 +14,7 @@
 #include <cassert>
 
 class RTOS : public node {
-    
+    typedef void (*FUNCTION)(node*);
     public:
         RTOS(node * &taskList, node *init_link = NULL, int prior = 0);
         RTOS(node * &taskList,Task::FUNCTION function,int prior = 0, node *init_link = NULL);
@@ -26,18 +26,17 @@ class RTOS : public node {
         void createTask(Task::FUNCTION function, int priority = 0);
         int getReady();
         int getPriority();
-        void insertTimerFunction(Task::FUNCTION function);
+        void insertTimerFunction(RTOS::FUNCTION function);
         ~RTOS();
     
     private:
-        short count = 0;
         node *listHead;
         node *cursor;
         node *taskPointer;
         int base;
         int priority;
         int ready = 1;
-        Task::FUNCTION Timer;
+        RTOS::FUNCTION Timer;
         
 };
 #endif /* RTOS_hpp */
