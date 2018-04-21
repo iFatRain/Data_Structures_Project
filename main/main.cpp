@@ -17,23 +17,22 @@ void lungs(void) {
 }
 
 void blank() {
-    cout << "IN Blank" << endl;
+    cout << "In Blank" << endl;
     return;
 }
 
 int main(int argc, const char * argv[]) {
     timeInit();
     node* first_head = NULL;
-    //node* RTOS_list_head = NULL;
-    RTOS mainRTOS(first_head, &heart, 10);
+    RTOS mainRTOS(first_head, &heart, 200);
     mainRTOS.createTask(NULL, -1);
-    mainRTOS.createTask(&lungs, 10);
+    mainRTOS.createTask(&lungs, 100);
     
     for (int i = 24; i > 0; i--){
        mainRTOS.createTask(&heart,i % 10);
     }
     mainRTOS.insertTimerFunction(&timeFunction);
-    for(;;){
+    while(1) {
         mainRTOS.startOS();
     }
     return 0;
