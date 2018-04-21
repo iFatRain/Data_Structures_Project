@@ -10,6 +10,12 @@
 #include <assert.h>
 
 
+RTOS::RTOS(node * &taskList,Task::FUNCTION function,int prior, node *init_link): node(init_link) {
+    listHead = taskList;
+    priority = prior;
+    Task_list_head_insert(listHead,function , prior);
+}
+
 RTOS:: RTOS(node * &taskList, node *init_link, int prior): node(init_link) {
     listHead = taskList;
     priority = prior;
@@ -17,28 +23,31 @@ RTOS:: RTOS(node * &taskList, node *init_link, int prior): node(init_link) {
 
 RTOS:: ~RTOS(){}
 
+void RTOS::createTask(Task::FUNCTION function, int priority){
+    Task_list_insert(listHead, function, priority);
+    return;
+}
+
 RTOS::node* RTOS::Scheduler(){
     base = 0;
+    taskPointer = NULL;
     for(cursor =listHead; cursor->link() != NULL; cursor = cursor->link()) {
         if((cursor->getReady() == 1) && (cursor->getPriority() >= base)) {
             base = cursor->getPriority();
             taskPointer = cursor;
         }
     }
-    assert(taskPointer != NULL);
+    
     return taskPointer;
 }
 
 void RTOS:: task() {
-        startTask();
+    startOS();
     return;
 }
 
-void RTOS:: startTask() {
-    node* schedule = Scheduler();
-    cout << "TaskList: " << listHead << endl;
-    cout <<"SCHEDULE: "<< schedule << endl;
-    schedule->task();
+void RTOS:: startTask(node* taskCursor) {
+        taskCursor->task();
     return;
 }
 
@@ -49,8 +58,20 @@ int RTOS:: getReady() {
 int RTOS::getPriority() {
     return priority;
 }
-//void RTOS:: startOS() {
-//    while() {
-//
-//    }
-//}
+void RTOS:: startOS() {
+    for(node* taskCursor = Scheduler(); taskCursor != NULL; taskCursor = Scheduler()) {
+        cout << count++ <<" ";
+        startTask(taskCursor);
+    }
+}
+
+void RTOS::wait(){
+    Timer();
+}
+
+void RTOS::insertTimerFunction(Task::FUNCTION function) {
+    Timer = function;
+    return;
+}
+
+

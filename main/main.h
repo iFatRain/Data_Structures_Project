@@ -12,6 +12,6 @@
 #include <iostream>
 #include <time.h>
 #include "RTOS.hpp"
-#include "helperFunctions.hpp"
+//#include "helperFunctions.hpp"
 #include "Task.hpp"
 #endif /* main_h */

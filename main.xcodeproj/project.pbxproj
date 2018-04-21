@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C154EF9208ABA880074E56A /* TimersandUpdates.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4C154EF7208ABA880074E56A /* TimersandUpdates.cpp */; };
 		4CF1B95A207C0DED00008DEF /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4CF1B959207C0DED00008DEF /* main.cpp */; };
 		4CF1B965207C12E700008DEF /* node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4CF1B963207C12E700008DEF /* node.cpp */; };
 		4CF1B979207D56E500008DEF /* Task.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4CF1B977207D56E400008DEF /* Task.cpp */; };
@@ -27,6 +28,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4C154EF7208ABA880074E56A /* TimersandUpdates.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TimersandUpdates.cpp; sourceTree = "<group>"; };
+		4C154EF8208ABA880074E56A /* TimersandUpdates.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TimersandUpdates.hpp; sourceTree = "<group>"; };
 		4CF1B956207C0DED00008DEF /* main */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = main; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CF1B959207C0DED00008DEF /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		4CF1B963207C12E700008DEF /* node.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = node.cpp; path = nodeClass/node.cpp; sourceTree = "<group>"; };
@@ -74,8 +77,10 @@
 				4CF1B97E207ED48A00008DEF /* helperFunctions.hpp */,
 				4CF1B959207C0DED00008DEF /* main.cpp */,
 				4CF1B969207C16EE00008DEF /* main.h */,
-				4CF1B97B207D56F900008DEF /* RTOS.cpp */,
+				4C154EF7208ABA880074E56A /* TimersandUpdates.cpp */,
+				4C154EF8208ABA880074E56A /* TimersandUpdates.hpp */,
 				4CF1B97A207D56F000008DEF /* RTOS.hpp */,
+				4CF1B97B207D56F900008DEF /* RTOS.cpp */,
 				4CF1B977207D56E400008DEF /* Task.cpp */,
 				4CF1B978207D56E400008DEF /* Task.hpp */,
 				4CF1B964207C12E700008DEF /* node.hpp */,
@@ -141,6 +146,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C154EF9208ABA880074E56A /* TimersandUpdates.cpp in Sources */,
 				4CF1B979207D56E500008DEF /* Task.cpp in Sources */,
 				4CF1B97F207ED48A00008DEF /* helperFunctions.cpp in Sources */,
 				4CF1B97C207D56FA00008DEF /* RTOS.cpp in Sources */,

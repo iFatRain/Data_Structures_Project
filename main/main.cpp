@@ -17,31 +17,22 @@ void lungs(void) {
 }
 
 void blank() {
+    cout << "IN Blank" << endl;
     return;
 }
 
 int main(int argc, const char * argv[]) {
     node* first_head = NULL;
-    node* RTOS_list_head = NULL;
+    //node* RTOS_list_head = NULL;
+    RTOS mainRTOS(first_head, &heart, 10);
+    mainRTOS.createTask(NULL, -1);
+    mainRTOS.createTask(&lungs, 10);
     
-    RTOS_list_head_insert(first_head,RTOS_list_head, 5);
-    RTOS_list_insert(NULL, RTOS_list_head, -1);
-    RTOS_list_insert(NULL,RTOS_list_head, 1);
-   
-
-   
-    Task_list_head_insert(first_head,&heart, 10);
-    Task_list_insert(first_head, NULL, -1);
-    Task_list_insert(first_head, &lungs, 10);
     for (int i = 24; i > 0; i--){
-       Task_list_insert(first_head,&heart,i % 10);
+       mainRTOS.createTask(&heart,i % 10);
     }
     
-    RTOS mainRTOS(first_head);
-    
-    for(int i = 25; i > 0; i--){
-        mainRTOS.startTask();
-    }
+    mainRTOS.startOS();
     return 0;
 }
 
