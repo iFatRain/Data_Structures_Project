@@ -60,7 +60,6 @@ int RTOS::getPriority() {
 }
 void RTOS:: startOS() {
     for(node* taskCursor = Scheduler(); taskCursor != NULL; taskCursor = Scheduler()) {
-        cout << count++ <<" ";
         startTask(taskCursor);
     }
 }

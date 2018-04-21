@@ -30,7 +30,6 @@ class RTOS : public node {
         ~RTOS();
     
     private:
-        short count = 0;
         node *listHead;
         node *cursor;
         node *taskPointer;
