@@ -64,7 +64,7 @@ void timeFunction(node* head_ptr) {
    // cout << "TIMEPASSED : "<< timepass  << endl;
     for(node *cursor = head_ptr; cursor->link() != NULL; cursor = cursor->link()) {
        //cout << timepass << endl;
-        if(timepass - heartTimeStamp + timerRandom%500 > 500 &&  cursor->getPriority() > 199) {
+        if(timepass - heartTimeStamp + timerRandom%350 > 500 &&  cursor->getPriority() > 199) {
             heartTimeStamp = timepass;
             cursor->setReady(1);
         }
