@@ -32,9 +32,10 @@ int main(int argc, const char * argv[]) {
     for (int i = 24; i > 0; i--){
        mainRTOS.createTask(&heart,i % 10);
     }
-
+    mainRTOS.insertTimerFunction(&timeFunction);
+    for(;;){
     mainRTOS.startOS();
-    
+    }
     return 0;
 }
 

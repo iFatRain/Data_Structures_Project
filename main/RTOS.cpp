@@ -59,10 +59,11 @@ int RTOS::getPriority() {
     return priority;
 }
 void RTOS:: startOS() {
+    wait();
     for(node* taskCursor = Scheduler(); taskCursor != NULL; taskCursor = Scheduler()) {
         startTask(taskCursor);
         for(long d = 0; d < 1000000; d++){
-            for(long j = 0; j < 10; j++){}
+            for(long j = 0; j < 200; j++){}
         }
     }
 }

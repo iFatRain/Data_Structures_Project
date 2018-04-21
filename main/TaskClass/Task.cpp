@@ -26,3 +26,6 @@ int Task:: getReady() {
     return Ready;
 }
 
+void Task:: setReady(int newReady) {
+    Ready = newReady;
+}

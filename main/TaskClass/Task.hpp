@@ -21,6 +21,7 @@ public:
     virtual void task();
     int getPriority();
     int getReady();
+    void setReady(int newReady);
 
 private:
     FUNCTION state;
