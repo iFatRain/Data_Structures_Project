@@ -63,7 +63,7 @@ void RTOS:: startOS() {
     for(node* taskCursor = Scheduler(); taskCursor != NULL; taskCursor = Scheduler()) {
         startTask(taskCursor);
         for(long d = 0; d < 1000000; d++){
-            for(long j = 0; j < 200; j++){}
+            for(long j = 0; j < 100; j++){}
         }
     }
 }

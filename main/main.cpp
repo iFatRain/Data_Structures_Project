@@ -34,7 +34,7 @@ int main(int argc, const char * argv[]) {
     }
     mainRTOS.insertTimerFunction(&timeFunction);
     for(;;){
-    mainRTOS.startOS();
+        mainRTOS.startOS();
     }
     return 0;
 }

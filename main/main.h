@@ -10,8 +10,7 @@
 #define main_h
 #include <stdlib.h>
 #include <iostream>
-#include <ctime>
-#include "TimersandUpdates.hpp"
+//#include "TimersandUpdates.hpp"
 #include "RTOS.hpp"
 #include "Task.hpp"
 
@@ -35,7 +34,7 @@ void timeInit() {
 double getElapsedTime() {
     time1 = clock();
     double seconds =  (time1 - time0)/CLOCKS_PER_SEC;
-   // time0 = time1;
+    time0 = time1;
     return seconds;
 }
 
@@ -46,9 +45,8 @@ void timeFunction(node* head_ptr) {
         return;
     }
     double timePassed = getElapsedTime();
-    cout << "TIMEPASSED: " << timePassed << endl;
     for(node *cursor = head_ptr; cursor->link() != NULL; cursor = cursor->link()) {
-        if(timePassed/10000 > .0001 &&  cursor->getPriority() > 4) {
+        if(timePassed/10000 < .001 &&  cursor->getPriority() > 4) {
             cursor->setReady(1);
         }
     }
