@@ -22,6 +22,7 @@ void blank() {
 }
 
 int main(int argc, const char * argv[]) {
+    timeInit();
     node* first_head = NULL;
     //node* RTOS_list_head = NULL;
     RTOS mainRTOS(first_head, &heart, 10);
@@ -31,8 +32,9 @@ int main(int argc, const char * argv[]) {
     for (int i = 24; i > 0; i--){
        mainRTOS.createTask(&heart,i % 10);
     }
-    
+
     mainRTOS.startOS();
+    
     return 0;
 }
 

@@ -61,14 +61,17 @@ int RTOS::getPriority() {
 void RTOS:: startOS() {
     for(node* taskCursor = Scheduler(); taskCursor != NULL; taskCursor = Scheduler()) {
         startTask(taskCursor);
+        for(long d = 0; d < 1000000; d++){
+            for(long j = 0; j < 10; j++){}
+        }
     }
 }
 
 void RTOS::wait(){
-    Timer();
+    Timer(listHead);
 }
 
-void RTOS::insertTimerFunction(Task::FUNCTION function) {
+void RTOS::insertTimerFunction(RTOS::FUNCTION function) {
     Timer = function;
     return;
 }

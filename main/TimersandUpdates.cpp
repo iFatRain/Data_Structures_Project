@@ -7,3 +7,15 @@
 //
 
 #include "TimersandUpdates.hpp"
+
+//void timeInit() {
+//    std::time(&time0);
+//    return;
+//}
+//
+//double getElapsedTime() {
+//    double seconds =  time(NULL) - time0;
+//    time0 = time1;
+//    return seconds;
+//}
+
