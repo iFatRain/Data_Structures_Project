@@ -35,7 +35,6 @@ void adjustTime(time_t &hearttime);
 void timeInit() {
     time0 = clock();
     srand(clock());
-    timerRandom = rand();
     return;
 }
 
@@ -64,7 +63,7 @@ void timeFunction(node* head_ptr) {
    // cout << "TIMEPASSED : "<< timepass  << endl;
     for(node *cursor = head_ptr; cursor->link() != NULL; cursor = cursor->link()) {
        //cout << timepass << endl;
-        if(timepass - heartTimeStamp + timerRandom%350 > 500 &&  cursor->getPriority() > 199) {
+        if(timepass - heartTimeStamp + rand()%150 > 500 &&  cursor->getPriority() > 199) {
             heartTimeStamp = timepass;
             cursor->setReady(1);
         }
