@@ -26,11 +26,14 @@ class RTOS : public node {
         int getReady();
         int getPriority();
         void insertTimerFunction(RTOS::FUNCTION function);
+        node* navigate(node*& pointer,char side);
         void print();
         ~RTOS();
     
-    private:
         node *listHead;
+   
+protected:
+        int counter = 1;
         node *cursor;
         node *taskPointer;
         int base;

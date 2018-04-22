@@ -30,15 +30,41 @@ void RTOS::print(){
 
 RTOS::node* RTOS::Scheduler(){
     base = 0;
+    char character = NULL;
     taskPointer = NULL;
-//    for(cursor =listHead; cursor->link() != NULL; cursor = cursor->link()) {
-//        if((cursor->getReady() == 1) && (cursor->getPriority() >= base)) {
-//            base = cursor->getPriority();
-//            taskPointer = cursor;
-//        }
-//    }
-    
-    return taskPointer;
+        for(cursor = listHead; cursor != NULL ;){
+            if(cursor->getReady() == 1 ) {
+                character = 'R';
+                taskPointer = cursor;
+                cursor = navigate(cursor,'R');
+            }
+            else if(cursor->getReady() == 0) {
+                character = 'L';
+                cursor = navigate(cursor,'L');
+            }
+        }
+    if (taskPointer != NULL && taskPointer-> getReady() == 1) {
+        return taskPointer;
+    }
+    else {
+        return NULL;
+    }
+}
+
+node* RTOS::navigate(node*& pointer, char side){
+    switch (side) {
+        case 'R':
+        case 'r':
+            pointer = pointer->right;
+            break;
+        case 'L':
+        case 'l':
+            pointer = pointer->left;
+            break;
+        default:
+            break;
+    }
+    return pointer;
 }
 
 void RTOS:: task() {
@@ -48,6 +74,7 @@ void RTOS:: task() {
 
 void RTOS:: startTask(node* taskCursor) {
     if (taskCursor != NULL) {
+        cout << counter++ <<" "<< endl;
         taskCursor->task();
     }
     return;

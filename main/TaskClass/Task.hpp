@@ -26,7 +26,7 @@ public:
 private:
     FUNCTION state;
     int Priority;
-    int Ready = 0;
+    int Ready = 1;
 };
 
 // FUNCTIONS for the linked list toolkit

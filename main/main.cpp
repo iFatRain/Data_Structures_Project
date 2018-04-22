@@ -34,16 +34,15 @@ int main(int argc, const char * argv[]) {
     //These call HelperFUNCTIONs :: insert()
     RTOS mainRTOS(&heart, 200);
     mainRTOS.createTask(&lungs, 100);
-//    for (int i = 24; i > 0; i--){
-//       mainRTOS.createTask(&heart,i % 99);
-//    }
+    for (int i = 24; i > 0; i--){
+       mainRTOS.createTask(&heart, (i * 5) % 99);
+    }
     mainRTOS.insertTimerFunction(&timeFunction);
-//    while(1) {
-//        mainRTOS.startOS();
-//    }
-    
+    while(1) {
+        mainRTOS.startOS();
+    }
     //Calls HelperFunctions:: print()
-    mainRTOS.print();
+    //mainRTOS.print();
     return 0;
 }
 
