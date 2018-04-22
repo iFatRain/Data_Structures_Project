@@ -9,30 +9,34 @@
 #include "helperFunctions.hpp"
 
 
-void insert(int key,Task::FUNCTION function, node* &current){
+void insertTree(int key,Task::FUNCTION function, node* &current){
     if(current==NULL) {
         cout << "inserting " << endl;
         current = new Task(function,key);
     }
     else{
-        if(key<(current)->x)
-            insert(key,function,current->left);
-        else
-            insert(key,function,current->right);
+        if(key<(current)->x) {
+            cout << "inserting left" << endl;
+            insertTree(key,function,current->left);
+        }
+        else {
+            insertTree(key,function,current->right);
+            cout << "inserting right" << endl;
+        }
     }
     return;
 }
 
 void printTree(node *root){
-    assert(root != NULL);
     if(root!=NULL)
     {
-        cout<<root->getPriority()<<" ";
+        cout<<root->getPriority()<< endl;
         printTree(root->left);
         printTree(root->right);
     }
     return;
 }
+
 //
 //void RTOS_list_head_insert(node*& taskList,node* &head_ptr, int priority) {
 //    head_ptr = new RTOS(taskList,head_ptr, priority);

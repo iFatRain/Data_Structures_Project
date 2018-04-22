@@ -29,20 +29,21 @@ void blank() {
 
 
 int main(int argc, const char * argv[]) {
-    timeInit();
-    node* first_head = NULL;
-    RTOS mainRTOS(first_head, &heart, 200);
-   // mainRTOS.createTask(NULL, -1);
+   timeInit();
+    std::cout << "Created";
+    //These call HelperFUNCTIONs :: insert()
+    RTOS mainRTOS(&heart, 200);
     mainRTOS.createTask(&lungs, 100);
-    
-    for (int i = 24; i > 0; i--){
-       mainRTOS.createTask(&heart,i % 99);
-    }
+//    for (int i = 24; i > 0; i--){
+//       mainRTOS.createTask(&heart,i % 99);
+//    }
     mainRTOS.insertTimerFunction(&timeFunction);
 //    while(1) {
 //        mainRTOS.startOS();
 //    }
-    printTree(first_head);
+    
+    //Calls HelperFunctions:: print()
+    mainRTOS.print();
     return 0;
 }
 

@@ -10,18 +10,22 @@
 #include <assert.h>
 
 
-RTOS::RTOS(node * &taskList,Task::FUNCTION function,int prior, node *init_link): node(prior) {
-    listHead = taskList;
+RTOS::RTOS(Task::FUNCTION function,int prior, node *init_link): node(prior) {
+    listHead = NULL;
     priority = prior;
-    
-    insert(prior,function,listHead);
+    cout <<endl<< "CREATED" << endl;
+    insertTree(prior,function,listHead);
 }
 
 RTOS:: ~RTOS(){}
 
 void RTOS::createTask(Task::FUNCTION function, int priority){
-        insert(priority,function,listHead);
+    cout << "INSERTED" << endl;
+        insertTree(priority,function,listHead);
     return;
+}
+void RTOS::print(){
+    printTree(listHead);
 }
 
 RTOS::node* RTOS::Scheduler(){

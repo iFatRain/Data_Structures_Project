@@ -13,8 +13,8 @@ class node{
     public:
     typedef int value_type;
         int x;
-        node *left;
-        node *right;
+        node *left = NULL;
+        node *right = NULL;
     
     node(int data) {
         x=data;

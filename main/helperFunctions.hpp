@@ -24,5 +24,5 @@ void Task_list_insert(node* previous_ptr, FUNCTION func,const node::value_type& 
 node* list_findLast(node* previous_ptr);
 void RTOS_list_head_insert(node*& taskList,node* &head_ptr, int priority);
 void RTOS_list_insert(node* taskList, node* previous_ptr,int priority);
-void insert ( int key ,Task::FUNCTION funct, node* &current );
+void insertTree ( int key ,Task::FUNCTION funct, node* &current );
 void printTree(node *root);
