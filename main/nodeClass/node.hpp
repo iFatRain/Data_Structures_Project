@@ -23,6 +23,7 @@ class node {
         virtual int getPriority();
         virtual void setReady(int newReady);
     protected:
+        static unsigned int index;
         node* link_field = NULL;
 };
     

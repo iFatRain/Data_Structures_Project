@@ -8,18 +8,6 @@
 
 #include "main.h"
 
-void heart(void) {
-    cout << "Heart Beat" << endl;
-}
-
-void lungs(void) {
-    cout << "Lung Contraction" << endl;
-}
-
-void blank() {
-    cout << "In Blank" << endl;
-    return;
-}
 
 int main(int argc, const char * argv[]) {
     timeInit();
@@ -28,9 +16,9 @@ int main(int argc, const char * argv[]) {
     mainRTOS.createTask(NULL, -1);
     mainRTOS.createTask(&lungs, 100);
     
-    for (int i = 24; i > 0; i--){
-       mainRTOS.createTask(&heart,i % 10);
-    }
+//    for (int i = 24; i > 0; i--){
+//       mainRTOS.createTask(&heart,i % 10);
+//    }
     mainRTOS.insertTimerFunction(&timeFunction);
     while(1) {
         mainRTOS.startOS();
