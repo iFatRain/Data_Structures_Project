@@ -16,7 +16,7 @@ class Task : public node {
 public:
     typedef void (*FUNCTION )(void);
     typedef int value_type;
-    Task(FUNCTION func,const value_type& init_data = value_type(), node* init_link = NULL);
+    Task(FUNCTION func,const value_type& init_data = value_type());
     ~Task();
     virtual void task();
     int getPriority();

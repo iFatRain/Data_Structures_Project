@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4C154EF9208ABA880074E56A /* TimersandUpdates.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4C154EF7208ABA880074E56A /* TimersandUpdates.cpp */; };
+		4C154F0B208C6F3F0074E56A /* BinTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4C154F09208C6F3F0074E56A /* BinTree.cpp */; };
 		4CF1B95A207C0DED00008DEF /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4CF1B959207C0DED00008DEF /* main.cpp */; };
 		4CF1B965207C12E700008DEF /* node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4CF1B963207C12E700008DEF /* node.cpp */; };
 		4CF1B979207D56E500008DEF /* Task.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4CF1B977207D56E400008DEF /* Task.cpp */; };
@@ -30,6 +31,8 @@
 /* Begin PBXFileReference section */
 		4C154EF7208ABA880074E56A /* TimersandUpdates.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TimersandUpdates.cpp; sourceTree = "<group>"; };
 		4C154EF8208ABA880074E56A /* TimersandUpdates.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TimersandUpdates.hpp; sourceTree = "<group>"; };
+		4C154F09208C6F3F0074E56A /* BinTree.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BinTree.cpp; path = BinaryTreeClass/BinTree.cpp; sourceTree = "<group>"; };
+		4C154F0A208C6F3F0074E56A /* BinTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BinTree.h; path = BinaryTreeClass/BinTree.h; sourceTree = "<group>"; };
 		4CF1B956207C0DED00008DEF /* main */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = main; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CF1B959207C0DED00008DEF /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		4CF1B963207C12E700008DEF /* node.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = node.cpp; path = nodeClass/node.cpp; sourceTree = "<group>"; };
@@ -73,6 +76,8 @@
 		4CF1B958207C0DED00008DEF /* main */ = {
 			isa = PBXGroup;
 			children = (
+				4C154F09208C6F3F0074E56A /* BinTree.cpp */,
+				4C154F0A208C6F3F0074E56A /* BinTree.h */,
 				4CF1B97D207ED48A00008DEF /* helperFunctions.cpp */,
 				4CF1B97E207ED48A00008DEF /* helperFunctions.hpp */,
 				4CF1B959207C0DED00008DEF /* main.cpp */,
@@ -150,6 +155,7 @@
 				4CF1B979207D56E500008DEF /* Task.cpp in Sources */,
 				4CF1B97F207ED48A00008DEF /* helperFunctions.cpp in Sources */,
 				4CF1B97C207D56FA00008DEF /* RTOS.cpp in Sources */,
+				4C154F0B208C6F3F0074E56A /* BinTree.cpp in Sources */,
 				4CF1B95A207C0DED00008DEF /* main.cpp in Sources */,
 				4CF1B965207C12E700008DEF /* node.cpp in Sources */,
 			);

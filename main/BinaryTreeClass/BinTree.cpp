@@ -4,16 +4,16 @@
 
 #include "BinTree.h"
 
-void BinTree::insert(int key,node* &current){
+void BinTree::insert(int key,Task::FUNCTION function, node* &current){
     if(current==NULL)
     {
         current = new node(key);
     }
     else{
         if(key<(current)->x)
-            insert(key,current->left);
+            insert(key,function,current->left);
         else
-            insert(key,current->right);
+            insert(key,function,current->right);
     }
     return;
 }
@@ -26,3 +26,4 @@ void BinTree::printTree(node *root){
         printTree(root->right);
     }
 }
+

@@ -16,7 +16,6 @@
 class RTOS : public node {
     typedef void (*FUNCTION)(node*);
     public:
-        RTOS(node * &taskList, node *init_link = NULL, int prior = 0);
         RTOS(node * &taskList,Task::FUNCTION function,int prior = 0, node *init_link = NULL);
         node* Scheduler();
         void wait();

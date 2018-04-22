@@ -10,33 +10,29 @@
 #include <assert.h>
 
 
-RTOS::RTOS(node * &taskList,Task::FUNCTION function,int prior, node *init_link): node(init_link) {
+RTOS::RTOS(node * &taskList,Task::FUNCTION function,int prior, node *init_link): node(prior) {
     listHead = taskList;
     priority = prior;
-    Task_list_head_insert(listHead,function , prior);
-}
-
-RTOS:: RTOS(node * &taskList, node *init_link, int prior): node(init_link) {
-    listHead = taskList;
-    priority = prior;
+    
+    insert(prior,function,listHead);
 }
 
 RTOS:: ~RTOS(){}
 
 void RTOS::createTask(Task::FUNCTION function, int priority){
-    Task_list_insert(listHead, function, priority);
+        insert(priority,function,listHead);
     return;
 }
 
 RTOS::node* RTOS::Scheduler(){
     base = 0;
     taskPointer = NULL;
-    for(cursor =listHead; cursor->link() != NULL; cursor = cursor->link()) {
-        if((cursor->getReady() == 1) && (cursor->getPriority() >= base)) {
-            base = cursor->getPriority();
-            taskPointer = cursor;
-        }
-    }
+//    for(cursor =listHead; cursor->link() != NULL; cursor = cursor->link()) {
+//        if((cursor->getReady() == 1) && (cursor->getPriority() >= base)) {
+//            base = cursor->getPriority();
+//            taskPointer = cursor;
+//        }
+//    }
     
     return taskPointer;
 }

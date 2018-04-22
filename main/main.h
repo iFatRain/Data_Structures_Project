@@ -62,17 +62,17 @@ void timeFunction(node* head_ptr) {
         return;
     }
    // cout << "TIMEPASSED : "<< timepass  << endl;
-    for(node *cursor = head_ptr; cursor->link() != NULL; cursor = cursor->link()) {
-       //cout << timepass << endl;
-        if(timepass - heartTimeStamp + timerRandom%350 > 500 &&  cursor->getPriority() > 199) {
-            heartTimeStamp = timepass;
-            cursor->setReady(1);
-        }
-        if(timepass - lungTimeStamp > 1000 &&  cursor->getPriority() > 99) {
-            heartTimeStamp = timepass;
-            cursor->setReady(1);
-        }
-    }
+//    for(node *cursor = head_ptr; cursor->link() != NULL; cursor = cursor->link()) {
+//       //cout << timepass << endl;
+//        if(timepass - heartTimeStamp + timerRandom%350 > 500 &&  cursor->getPriority() > 199) {
+//            heartTimeStamp = timepass;
+//            cursor->setReady(1);
+//        }
+//        if(timepass - lungTimeStamp > 1000 &&  cursor->getPriority() > 99) {
+//            heartTimeStamp = timepass;
+//            cursor->setReady(1);
+//        }
+//    }
     return;
 }
 

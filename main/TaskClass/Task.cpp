@@ -3,8 +3,8 @@
 #include "Task.hpp"
 #include "node.hpp"
 
-Task::Task(FUNCTION func,const value_type& init_data, node* init_link)
-: node(init_link) {
+Task::Task(FUNCTION func,const value_type& init_data)
+: node(init_data) {
     state = func;
     Priority = init_data;
 }
