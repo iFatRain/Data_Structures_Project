@@ -8,18 +8,6 @@
 
 #include "main.h"
 
-void heart(void) {
-    cout << "Heart Beat" << endl;
-}
-
-void lungs(void) {
-    cout << "Lung Contraction" << endl;
-}
-
-void blank() {
-    cout << "In Blank" << endl;
-    return;
-}
 
 int main(int argc, const char * argv[]) {
     timeInit();

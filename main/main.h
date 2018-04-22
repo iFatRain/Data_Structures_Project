@@ -11,6 +11,8 @@
 #include <stdlib.h>
 #include <iostream>
 #include "TimersandUpdates.hpp"
+#include "helperFunctions.hpp"
+#include "voidFuctionLibrary.hpp"
 #include "RTOS.hpp"
 #include "Task.hpp"
 #include <string>
