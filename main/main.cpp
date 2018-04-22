@@ -24,25 +24,48 @@ void blank() {
 /**
  *right now I am only working on integrating your tree functionality
  *I am attempting to use the print functionality after adding the Tasks through the RTOS interface (this calls the insert function)
+ *
+ *TASK::Ready variable was set to 1 for debugging purposes it is intended to be set to 0 when actually using.
  */
 
 
 
 int main(int argc, const char * argv[]) {
-   timeInit();
-    std::cout << "Created";
-    //These call HelperFUNCTIONs :: insert()
-    RTOS mainRTOS(&heart, 200);
+    //Initializes TIMER
+    timeInit();
+/*
+*changed constructor to take in a time delay  in micro seconds this delay happens before the timeres get called
+*this avoids constant pointless looping.
+* The UI should also allow an input of the delay
+*
+*/
+    RTOS mainRTOS(200000);
+/*
+ *THIS IS THE NEW INTERFACE THE UI WILL INTERACT WITH:
+ *ex:
+ *FUNCITON ARRAY: A[] will hold the library of functions
+ *HASH: will return the index of the corresponding functions
+ *STRING: userinput for name of function
+ *
+ * ********mainRTOS.createTask(A[hash(userInput)], priority);*********
+ */
+    
+    
+//These call HelperFUNCTIONs :: insert()
+    mainRTOS.createTask(&heart, 200);
     mainRTOS.createTask(&lungs, 100);
+    
+    
+    
     for (int i = 24; i > 0; i--){
        mainRTOS.createTask(&heart, (i * 5) % 99);
     }
+    
+    //INSERTION OF TIMER FOR RTOS TO INTERACT WITH
     mainRTOS.insertTimerFunction(&timeFunction);
     while(1) {
         mainRTOS.startOS();
     }
-    //Calls HelperFunctions:: print()
-    //mainRTOS.print();
     return 0;
 }
 

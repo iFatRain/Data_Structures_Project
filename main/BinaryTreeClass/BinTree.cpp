@@ -21,7 +21,6 @@ void BinTree::insert(int key,Task::FUNCTION function, node* &current){
 void BinTree::printTree(node *root){
     if(root!=NULL)
     {
-        cout<<root->x<<" ";
         printTree(root->left);
         printTree(root->right);
     }

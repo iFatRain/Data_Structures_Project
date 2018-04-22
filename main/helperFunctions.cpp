@@ -11,17 +11,14 @@
 
 void insertTree(int key,Task::FUNCTION function, node* &current){
     if(current==NULL) {
-        cout << "inserting " << endl;
         current = new Task(function,key);
     }
     else{
         if(key<(current)->x) {
-            cout << "inserting left" << endl;
             insertTree(key,function,current->left);
         }
         else {
             insertTree(key,function,current->right);
-            cout << "inserting right" << endl;
         }
     }
     return;

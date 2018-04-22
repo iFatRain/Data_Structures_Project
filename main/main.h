@@ -14,7 +14,18 @@
 #include "RTOS.hpp"
 #include "Task.hpp"
 #include <string>
-
+/**
+ * FIRST: All Functions on this page are needed for the Timers.
+ * the one That needs to be changed in particular is time function
+ * It needs another type of mechanism to visit all of the nodes
+ *
+ * NEXT GOAL: to move these files into the TimersandUpdates page.
+ * I got errors (LINKER) for some reason when I tried maybe you can figure it out.
+ *
+ * LAST GOAL:
+ * ADD INTERVAL time to the rtos that will lengthen the amount of time in between
+ * calls to consult all the timers. THIS TIME SHOULD BE LESS THAN THE LOWEST TIMER INTERVAL
+ */
 using namespace std;
 time_t time0;
 time_t time1;
@@ -64,7 +75,7 @@ void timeFunction(node* head_ptr) {
    // cout << "TIMEPASSED : "<< timepass  << endl;
 //    for(node *cursor = head_ptr; cursor->link() != NULL; cursor = cursor->link()) {
 //       //cout << timepass << endl;
-//        if(timepass - heartTimeStamp + timerRandom%350 > 500 &&  cursor->getPriority() > 199) {
+//       if(timepass - heartTimeStamp + timerRandom%350 > 500 &&  cursor->getPriority() > 199) {
 //            heartTimeStamp = timepass;
 //            cursor->setReady(1);
 //        }

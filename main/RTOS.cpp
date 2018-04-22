@@ -10,17 +10,15 @@
 #include <assert.h>
 
 
-RTOS::RTOS(Task::FUNCTION function,int prior, node *init_link): node(prior) {
+RTOS::RTOS(unsigned int TIMEDELAY, int prior): node(prior) {
     listHead = NULL;
     priority = prior;
-    cout <<endl<< "CREATED" << endl;
-    insertTree(prior,function,listHead);
+    delay = TIMEDELAY;
 }
 
 RTOS:: ~RTOS(){}
 
 void RTOS::createTask(Task::FUNCTION function, int priority){
-    cout << "INSERTED" << endl;
         insertTree(priority,function,listHead);
     return;
 }
@@ -32,17 +30,17 @@ RTOS::node* RTOS::Scheduler(){
     base = 0;
     char character = NULL;
     taskPointer = NULL;
-        for(cursor = listHead; cursor != NULL ;){
-            if(cursor->getReady() == 1 ) {
-                character = 'R';
-                taskPointer = cursor;
-                cursor = navigate(cursor,'R');
-            }
-            else if(cursor->getReady() == 0) {
-                character = 'L';
-                cursor = navigate(cursor,'L');
-            }
+    for(cursor = listHead; cursor != NULL ;){
+        if(cursor->getReady() == 1 ) {
+            character = 'R';
+            taskPointer = cursor;
+            cursor = navigate(cursor,'R');
         }
+        else if(cursor->getReady() == 0) {
+            character = 'L';
+            cursor = navigate(cursor,'L');
+        }
+    }
     if (taskPointer != NULL && taskPointer-> getReady() == 1) {
         return taskPointer;
     }
@@ -74,7 +72,6 @@ void RTOS:: task() {
 
 void RTOS:: startTask(node* taskCursor) {
     if (taskCursor != NULL) {
-        cout << counter++ <<" "<< endl;
         taskCursor->task();
     }
     return;
@@ -91,13 +88,12 @@ void RTOS:: startOS() {
     wait();
     for(node* taskCursor = Scheduler(); taskCursor != NULL ; taskCursor = Scheduler()) {
         startTask(taskCursor);
-        for(long i = 0; i < 1000000; i++) {
-            for(short d = 0; d < 100; d++);
-        }
     }
 }
 
 void RTOS::wait(){
+    //delay is in MicroSECONDS
+    usleep(delay);
     Timer(listHead);
 }
 

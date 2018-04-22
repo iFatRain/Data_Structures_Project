@@ -12,11 +12,12 @@
 #include "Task.hpp"
 #include "helperFunctions.hpp"
 #include <cassert>
+#include <unistd.h>
 
 class RTOS : public node {
     typedef void (*FUNCTION)(node*);
     public:
-        RTOS(Task::FUNCTION function,int prior = 0, node *init_link = NULL);
+        RTOS(unsigned int TIMEDELAY = 0,int prior = 0);
         node* Scheduler();
         void wait();
         void startTask(node* taskCursor);
@@ -33,12 +34,12 @@ class RTOS : public node {
         node *listHead;
    
 protected:
-        int counter = 1;
         node *cursor;
         node *taskPointer;
         int base;
         int priority;
         int ready = 1;
+        unsigned long delay; // milliseconds
         RTOS::FUNCTION Timer;
         
 };
