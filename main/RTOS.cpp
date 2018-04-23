@@ -10,35 +10,59 @@
 #include <assert.h>
 
 
-RTOS::RTOS(node * &taskList,Task::FUNCTION function,int prior, node *init_link): node(init_link) {
-    listHead = taskList;
+RTOS::RTOS(unsigned int TIMEDELAY, int prior): node(prior) {
+    listHead = NULL;
     priority = prior;
-    Task_list_head_insert(listHead,function , prior);
-}
-
-RTOS:: RTOS(node * &taskList, node *init_link, int prior): node(init_link) {
-    listHead = taskList;
-    priority = prior;
+    delay = TIMEDELAY;
 }
 
 RTOS:: ~RTOS(){}
 
 void RTOS::createTask(Task::FUNCTION function, int priority){
-    Task_list_insert(listHead, function, priority);
+        insertTree(priority,function,listHead);
     return;
+}
+void RTOS::print(){
+    printTree(listHead);
 }
 
 RTOS::node* RTOS::Scheduler(){
     base = 0;
+    char character = NULL;
     taskPointer = NULL;
-    for(cursor =listHead; cursor->link() != NULL; cursor = cursor->link()) {
-        if((cursor->getReady() == 1) && (cursor->getPriority() >= base)) {
-            base = cursor->getPriority();
+    for(cursor = listHead; cursor != NULL ;){
+        if(cursor->getReady() == 1 ) {
+            character = 'R';
             taskPointer = cursor;
+            cursor = navigate(cursor,'R');
+        }
+        else if(cursor->getReady() == 0) {
+            character = 'L';
+            cursor = navigate(cursor,'L');
         }
     }
-    
-    return taskPointer;
+    if (taskPointer != NULL && taskPointer-> getReady() == 1) {
+        return taskPointer;
+    }
+    else {
+        return NULL;
+    }
+}
+
+node* RTOS::navigate(node*& pointer, char side){
+    switch (side) {
+        case 'R':
+        case 'r':
+            pointer = pointer->right;
+            break;
+        case 'L':
+        case 'l':
+            pointer = pointer->left;
+            break;
+        default:
+            break;
+    }
+    return pointer;
 }
 
 void RTOS:: task() {
@@ -64,13 +88,12 @@ void RTOS:: startOS() {
     wait();
     for(node* taskCursor = Scheduler(); taskCursor != NULL ; taskCursor = Scheduler()) {
         startTask(taskCursor);
-        for(long i = 0; i < 1000000; i++) {
-            for(short d = 0; d < 100; d++);
-        }
     }
 }
 
 void RTOS::wait(){
+    //delay is in MicroSECONDS
+    usleep(delay);
     Timer(listHead);
 }
 

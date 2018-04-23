@@ -9,23 +9,26 @@
 
 using namespace std;
 
-class node {
+class node{
     public:
-        typedef int value_type;
-        node(node* init_link = NULL);
-        virtual  ~node() {}
-        void set_link(node* new_link);
-        node* link();
-        node* link() const;
-        void setLink(node *next_ptr);
+    typedef int value_type;
+        int x;
+        node *left = NULL;
+        node *right = NULL;
+    
+    node(int data) {
+        x=data;
+        left = NULL;
+        right = NULL;
+    }
         virtual void task();
         virtual int getReady();
         virtual int getPriority();
         virtual void setReady(int newReady);
-    protected:
-        static unsigned int index;
-        node* link_field = NULL;
+
 };
+
+
     
   
     
