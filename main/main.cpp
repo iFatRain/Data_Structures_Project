@@ -43,11 +43,14 @@ int main(int argc, const char * argv[]) {
 /*
  *THIS IS THE NEW INTERFACE THE UI WILL INTERACT WITH:
  *ex:
- *FUNCITON ARRAY: A[] will hold the library of functions
- *HASH: will return the index of the corresponding functions
+ *HASH: will return the Function pointer
  *STRING: userinput for name of function
  *
- * ********mainRTOS.createTask(A[hash(userInput)], priority);*********
+ *NOTE: If the hash function returns null, alert the user it doesn't exist and re-prompt them for
+ *      a new string. 
+ *
+ *
+ * ********mainRTOS.createTask(hash(userInput), priority);*********
  */
     
     
