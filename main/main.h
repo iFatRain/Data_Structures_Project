@@ -39,7 +39,7 @@ long timerRandom;
 double getStartTime();
 void zeroOut();
 void timeFunction(node* head_ptr);
- int traverse(node *root, int timepass, int timeStamp);
+ int traverse(node* &root, int timepass, int timeStamp);
 void adjustTime(time_t &hearttime);
 #endif /* main_h */
 
@@ -70,10 +70,11 @@ void timeFunction(node* head_ptr) {
         first = false;
         start = getStartTime();
         heartTimeStamp = 0;
-        heartTimeStamp = traverse(head_ptr, timepass, heartTimeStamp);
+
         lungTimeStamp = 0;
         return;
     }
+    heartTimeStamp = traverse(head_ptr, timepass, heartTimeStamp);
     // cout << "TIMEPASSED : "<< timepass  << endl;
 //    for(node *cursor = head_ptr; cursor->link() != NULL; cursor = cursor->link()) {
 //       //cout << timepass << endl;
@@ -90,17 +91,22 @@ void timeFunction(node* head_ptr) {
 }
 // called whe you need to traverse through all the nodes. I took the same if statemnets from the old traversal when it
 // was only node class.
-int traverse(node *root, int timepass, int timeStamp)
+int traverse(node* &root, int timepass, int timeStamp)
 {
+    //cout << timepass << " " << timeStamp << endl;
 
     if(root!=NULL)
     {
-        if(timepass - timeStamp + timerRandom%350 > 500 &&  root->getPriority() > 199) {
+        //root->setReady(1);
+        //cout << root->getPriority() << endl;
+        if(timepass - timeStamp + timerRandom%350  > 500 &&  root->getPriority() > 199  ) {
             timeStamp = timepass;
-           root->setReady(1);
+            root->setReady(1);
+
         }
-        traverse(root->left, timepass, timeStamp);
         traverse(root->right, timepass, timeStamp);
+        traverse(root->left, timepass, timeStamp);
+
     }
 
     return timeStamp;

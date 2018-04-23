@@ -39,7 +39,7 @@ int main(int argc, const char * argv[]) {
 * The UI should also allow an input of the delay
 *
 */
-    RTOS mainRTOS(200000);
+    RTOS mainRTOS(0);
 /*
  *THIS IS THE NEW INTERFACE THE UI WILL INTERACT WITH:
  *ex:
@@ -57,11 +57,12 @@ int main(int argc, const char * argv[]) {
 //These call HelperFUNCTIONs :: insert()
     mainRTOS.createTask(&heart, 200);
     mainRTOS.createTask(&lungs, 100);
+    mainRTOS.createTask(&blank, 400);
     
     
-    for (int i = 24; i > 0; i--){
-       mainRTOS.createTask(&heart, (i * 5) % 99);
-    }
+   // for (int i = 24; i > 0; i--){
+    //   mainRTOS.createTask(&heart, (i * 5) % 99);
+    //}
     
     //INSERTION OF TIMER FOR RTOS TO INTERACT WITH
     mainRTOS.insertTimerFunction(&timeFunction);
