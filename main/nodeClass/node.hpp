@@ -25,6 +25,7 @@ class node{
         virtual int getReady();
         virtual int getPriority();
         virtual void setReady(int newReady);
+
 };
 
 

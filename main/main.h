@@ -11,6 +11,8 @@
 #include <stdlib.h>
 #include <iostream>
 #include "TimersandUpdates.hpp"
+#include "helperFunctions.hpp"
+#include "voidFuctionLibrary.hpp"
 #include "RTOS.hpp"
 #include "Task.hpp"
 #include <string>
@@ -47,7 +49,6 @@ void adjustTime(time_t &hearttime);
 void timeInit() {
     time0 = clock();
     srand(clock());
-    timerRandom = rand();
     return;
 }
 
@@ -74,6 +75,7 @@ void timeFunction(node* head_ptr) {
         lungTimeStamp = 0;
         return;
     }
+
     heartTimeStamp = traverse(head_ptr, timepass, heartTimeStamp);
     // cout << "TIMEPASSED : "<< timepass  << endl;
 //    for(node *cursor = head_ptr; cursor->link() != NULL; cursor = cursor->link()) {

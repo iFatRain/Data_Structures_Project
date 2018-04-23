@@ -58,13 +58,13 @@ int main(int argc, const char * argv[]) {
     mainRTOS.createTask(&heart, 200);
     mainRTOS.createTask(&lungs, 100);
     mainRTOS.createTask(&blank, 400);
-    
+
     
    // for (int i = 24; i > 0; i--){
     //   mainRTOS.createTask(&heart, (i * 5) % 99);
     //}
-    
-    //INSERTION OF TIMER FOR RTOS TO INTERACT WITH
+
+
     mainRTOS.insertTimerFunction(&timeFunction);
     while(1) {
         mainRTOS.startOS();
