@@ -88,7 +88,8 @@ void timeFunction(node* head_ptr) {
 //    }
     return;
 }
-
+// called whe you need to traverse through all the nodes. I took the same if statemnets from the old traversal when it
+// was only node class.
 int traverse(node *root, int timepass, int timeStamp)
 {
 
