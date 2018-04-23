@@ -15,6 +15,7 @@
 #include "voidFuctionLibrary.hpp"
 #include "RTOS.hpp"
 #include "Task.hpp"
+#include "hashtable.h"
 #include <string>
 /**
  * FIRST: All Functions on this page are needed for the Timers.
@@ -93,10 +94,7 @@ void timeFunction(node* head_ptr) {
 }
 // called whe you need to traverse through all the nodes. I took the same if statemnets from the old traversal when it
 // was only node class.
-int traverse(node* &root, int timepass, int timeStamp)
-{
-    //cout << timepass << " " << timeStamp << endl;
-
+int traverse(node* &root, int timepass, int timeStamp) {
     if(root!=NULL)
     {
         //root->setReady(1);
@@ -106,7 +104,11 @@ int traverse(node* &root, int timepass, int timeStamp)
             root->setReady(1);
 
         }
-        traverse(root->right, timepass, timeStamp);
+        if(timepass - lungTimeStamp > 1000 && root->getPriority() > 99) {
+            heartTimeStamp = timepass;
+            root->setReady(1);
+        }
+         traverse(root->right, timepass, timeStamp);
         traverse(root->left, timepass, timeStamp);
 
     }

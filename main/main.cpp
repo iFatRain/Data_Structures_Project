@@ -33,6 +33,12 @@ void blank() {
 int main(int argc, const char * argv[]) {
     //Initializes TIMER
     timeInit();
+
+    hashtable hash;
+    hash.poparray("heart", &heart);
+    hash.poparray("lungs", &lungs);
+
+
 /*
 *changed constructor to take in a time delay  in micro seconds this delay happens before the timeres get called
 *this avoids constant pointless looping.
@@ -55,8 +61,8 @@ int main(int argc, const char * argv[]) {
     
     
 //These call HelperFUNCTIONs :: insert()
-    mainRTOS.createTask(&heart, 200);
-    mainRTOS.createTask(&lungs, 100);
+    mainRTOS.createTask(hash.getfunction("heart"), 200);
+    mainRTOS.createTask(hash.getfunction("lungs"), 100);
     mainRTOS.createTask(&blank, 400);
 
     
