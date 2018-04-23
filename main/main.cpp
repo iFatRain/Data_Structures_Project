@@ -56,7 +56,6 @@ int main(int argc, const char * argv[]) {
     mainRTOS.createTask(&lungs, 100);
     
     
-    
     for (int i = 24; i > 0; i--){
        mainRTOS.createTask(&heart, (i * 5) % 99);
     }

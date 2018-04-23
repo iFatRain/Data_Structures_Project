@@ -39,6 +39,7 @@ long timerRandom;
 double getStartTime();
 void zeroOut();
 void timeFunction(node* head_ptr);
+ int traverse(node *root, int timepass, int timeStamp);
 void adjustTime(time_t &hearttime);
 #endif /* main_h */
 
@@ -59,20 +60,21 @@ double getStartTime() {
 }
 
 void timeFunction(node* head_ptr) {
-    long clockTime = (clock())/(CLOCKS_PER_SEC / 1000);
+    long clockTime = (clock()) / (CLOCKS_PER_SEC / 1000);
     long timepass = clockTime - start;
-    if(clockTime - start > 3000){
+    if (clockTime - start > 3000) {
         first = true;
     }
-    if(first){
+    if (first) {
         timeInit();
         first = false;
         start = getStartTime();
         heartTimeStamp = 0;
+        heartTimeStamp = traverse(head_ptr, timepass, heartTimeStamp);
         lungTimeStamp = 0;
         return;
     }
-   // cout << "TIMEPASSED : "<< timepass  << endl;
+    // cout << "TIMEPASSED : "<< timepass  << endl;
 //    for(node *cursor = head_ptr; cursor->link() != NULL; cursor = cursor->link()) {
 //       //cout << timepass << endl;
 //       if(timepass - heartTimeStamp + timerRandom%350 > 500 &&  cursor->getPriority() > 199) {
@@ -85,6 +87,22 @@ void timeFunction(node* head_ptr) {
 //        }
 //    }
     return;
+}
+
+int traverse(node *root, int timepass, int timeStamp)
+{
+
+    if(root!=NULL)
+    {
+        if(timepass - timeStamp + timerRandom%350 > 500 &&  root->getPriority() > 199) {
+            timeStamp = timepass;
+           root->setReady(1);
+        }
+        traverse(root->left, timepass, timeStamp);
+        traverse(root->right, timepass, timeStamp);
+    }
+
+    return timeStamp;
 }
 
 
