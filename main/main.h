@@ -32,6 +32,7 @@
 using namespace std;
 time_t time0;
 time_t time1;
+long timepass;
 long start = 0;
 bool first = true;
 long  heartTimeStamp = 0;
@@ -42,7 +43,7 @@ long timerRandom;
 double getStartTime();
 void zeroOut();
 void timeFunction(node* head_ptr);
- int traverse(node* &root, int timepass, int timeStamp);
+void traverse(node* &root);
 void adjustTime(time_t &hearttime);
 #endif /* main_h */
 
@@ -63,7 +64,7 @@ double getStartTime() {
 
 void timeFunction(node* head_ptr) {
     long clockTime = (clock()) / (CLOCKS_PER_SEC / 1000);
-    long timepass = clockTime - start;
+    timepass = clockTime - start;
     if (clockTime - start > 3000) {
         first = true;
     }
@@ -72,12 +73,11 @@ void timeFunction(node* head_ptr) {
         first = false;
         start = getStartTime();
         heartTimeStamp = 0;
-
         lungTimeStamp = 0;
         return;
     }
 
-    heartTimeStamp = traverse(head_ptr, timepass, heartTimeStamp);
+    traverse(head_ptr);
     // cout << "TIMEPASSED : "<< timepass  << endl;
 //    for(node *cursor = head_ptr; cursor->link() != NULL; cursor = cursor->link()) {
 //       //cout << timepass << endl;
@@ -94,26 +94,26 @@ void timeFunction(node* head_ptr) {
 }
 // called whe you need to traverse through all the nodes. I took the same if statemnets from the old traversal when it
 // was only node class.
-int traverse(node* &root, int timepass, int timeStamp) {
+void  traverse(node* &root) {
     if(root!=NULL)
     {
         //root->setReady(1);
         //cout << root->getPriority() << endl;
-        if(timepass - timeStamp + timerRandom%350  > 500 &&  root->getPriority() > 199  ) {
-            timeStamp = timepass;
-            root->setReady(1);
-
-        }
-        if(timepass - lungTimeStamp > 1000 && root->getPriority() > 99) {
+        if(timepass - heartTimeStamp   > 500 &&  root->getPriority() > 199  ) {
             heartTimeStamp = timepass;
             root->setReady(1);
         }
-         traverse(root->right, timepass, timeStamp);
-        traverse(root->left, timepass, timeStamp);
+        if(timepass - lungTimeStamp> 1000 && root->getPriority() > 99 && root-> getPriority() < 200) {
+           lungTimeStamp = timepass;
+            root->setReady(1);
+        }
+
+        traverse(root->left);
+        traverse(root->right);
 
     }
 
-    return timeStamp;
+    return ;
 }
 
 
@@ -122,4 +122,3 @@ void zeroOut() {
     time0 = 0;
     return;
 }
-

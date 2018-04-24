@@ -17,7 +17,7 @@
 class RTOS : public node {
     typedef void (*FUNCTION)(node*);
     public:
-        RTOS(unsigned int TIMEDELAY = 0,int prior = 0);
+        RTOS(unsigned int TIMEDELAY = 0,unsigned int mode = 0,int prior = 0);
         node* Scheduler();
         void wait();
         void startTask(node* taskCursor);
@@ -34,12 +34,13 @@ class RTOS : public node {
         node *listHead;
    
 protected:
+        unsigned int operationMode;
         node *cursor;
         node *taskPointer;
         int base;
         int priority;
         int ready = 1;
-        unsigned long delay; // milliseconds
+        unsigned int delay; // milliseconds
         RTOS::FUNCTION Timer;
         
 };

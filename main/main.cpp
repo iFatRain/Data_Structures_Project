@@ -37,7 +37,7 @@ int main(int argc, const char * argv[]) {
     hashtable hash;
     hash.poparray("heart", &heart);
     hash.poparray("lungs", &lungs);
-
+    hash.poparray("blank", &blank);
 
 /*
 *changed constructor to take in a time delay  in micro seconds this delay happens before the timeres get called
@@ -63,7 +63,7 @@ int main(int argc, const char * argv[]) {
 //These call HelperFUNCTIONs :: insert()
     mainRTOS.createTask(hash.getfunction("heart"), 200);
     mainRTOS.createTask(hash.getfunction("lungs"), 100);
-    mainRTOS.createTask(&blank, 400);
+    mainRTOS.createTask(hash.getfunction("blank"), 50);
 
     
    // for (int i = 24; i > 0; i--){

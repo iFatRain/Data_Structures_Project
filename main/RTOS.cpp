@@ -10,10 +10,11 @@
 #include <assert.h>
 
 
-RTOS::RTOS(unsigned int TIMEDELAY, int prior): node(prior) {
+RTOS::RTOS(unsigned int TIMEDELAY,unsigned int mode, int prior): node(prior) {
     listHead = NULL;
     priority = prior;
     delay = TIMEDELAY;
+    operationMode = mode;
 }
 
 RTOS:: ~RTOS(){}
@@ -30,18 +31,34 @@ RTOS::node* RTOS::Scheduler(){
     base = 0;
     char character = NULL;
     taskPointer = NULL;
-    for(cursor = listHead; cursor != NULL ;){
-        if(cursor->getReady() == 1 ) {
-            character = 'R';
-            taskPointer = cursor;
-            cursor = navigate(cursor,'R');
-        }
-        else if(cursor->getReady() == 0) {
-            character = 'L';
-            cursor = navigate(cursor,'L');
-        }
+    switch(operationMode) {
+        case 0:
+            for ( cursor = listHead; cursor != NULL;) {
+                if (cursor->getReady() == 1) {
+                    character = 'R';
+                    taskPointer = cursor;
+                    cursor = navigate(cursor, 'R');
+                } else if (cursor->getReady() == 0) {
+                    character = 'L';
+                    cursor = navigate(cursor, 'L');
+                }
+            }
+            break;
+        default:
+            for(;cursor != NULL; ) {
+              if(cursor->right != NULL) {
+                  cursor = cursor->right;
+              }
+              else if (cursor -> left != NULL) {
+                  cursor = cursor->left;
+              }
+                if(cursor -> getReady() == 1) {
+                    taskPointer = cursor;
+                }
+            }
+            break;
     }
-    if (taskPointer != NULL && taskPointer-> getReady() == 1) {
+    if (taskPointer != NULL && taskPointer->getReady() == 1) {
         return taskPointer;
     }
     else {
@@ -95,6 +112,7 @@ void RTOS::wait(){
     //delay is in MicroSECONDS
     usleep(delay);
     Timer(listHead);
+    return;
 }
 
 void RTOS::insertTimerFunction(RTOS::FUNCTION function) {
